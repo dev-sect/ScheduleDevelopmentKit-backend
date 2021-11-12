@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+using FluentValidation;
 using JetBrains.Annotations;
 using MediatR;
 using ScheduleDevelopmentKit.DataAccess;
@@ -18,6 +19,19 @@ namespace ScheduleDevelopmentKit.Application.Teachers.Commands
             string? MiddleName,
             string PhoneNumber,
             string Email) : IRequest<Response>;
+
+        [UsedImplicitly]
+        public class CommandValidator : AbstractValidator<Command>
+        {
+            public CommandValidator()
+            {
+                RuleFor(x => x.FirstName).MaximumLength(20);
+                RuleFor(x => x.LastName).MaximumLength(20);
+                RuleFor(x => x.MiddleName).MaximumLength(20);
+                RuleFor(x => x.PhoneNumber).Length(12).Must(x => x.StartsWith("+7"));
+                RuleFor(x => x.Email).MaximumLength(50).Must(x => x.Contains("@"));
+            }
+        }
 
         [PublicAPI]
         public record Response(

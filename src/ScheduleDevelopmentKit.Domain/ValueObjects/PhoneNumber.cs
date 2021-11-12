@@ -4,7 +4,6 @@ namespace ScheduleDevelopmentKit.Domain.ValueObjects
 {
     public class PhoneNumber : ValueObject
     {
-        
         public string Value { get; private init; } = null!;
 
         private PhoneNumber() {}

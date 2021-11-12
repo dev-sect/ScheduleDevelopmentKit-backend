@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using FluentValidation.AspNetCore;
+using MediatR;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -11,7 +12,10 @@ namespace ScheduleDevelopmentKit.Application
         {
             services.AddMediatR(typeof(CoreModule).Assembly);
 
-            services.AddControllers().PartManager.ApplicationParts.Add(new AssemblyPart(typeof(CoreModule).Assembly));
+            services.AddControllers()
+                .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining(typeof(CoreModule)))
+                .PartManager.ApplicationParts.Add(new AssemblyPart(typeof(CoreModule).Assembly));
+            
 
             return services;
         }
