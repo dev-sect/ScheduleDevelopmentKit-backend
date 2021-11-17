@@ -8,7 +8,7 @@ using ScheduleDevelopmentKit.DataAccess;
 using ScheduleDevelopmentKit.Domain.Entities;
 using ScheduleDevelopmentKit.Domain.ValueObjects;
 
-namespace ScheduleDevelopmentKit.Application.Teachers.Commands
+namespace ScheduleDevelopmentKit.Modules.Core.Teachers.Commands
 {
     public static class CreateTeacher
     {

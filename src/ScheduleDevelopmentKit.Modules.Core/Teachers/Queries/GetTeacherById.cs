@@ -6,7 +6,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using ScheduleDevelopmentKit.DataAccess;
 
-namespace ScheduleDevelopmentKit.Application.Teachers.Queries
+namespace ScheduleDevelopmentKit.Modules.Core.Teachers.Queries
 {
     public static class GetTeacherById
     {

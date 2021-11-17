@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using ScheduleDevelopmentKit.Application;
 using ScheduleDevelopmentKit.DataAccess;
+using ScheduleDevelopmentKit.Modules.Core;
 
 namespace ScheduleDevelopmentKit.Api
 {

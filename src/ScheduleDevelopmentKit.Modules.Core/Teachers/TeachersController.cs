@@ -1,10 +1,10 @@
 ﻿using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using ScheduleDevelopmentKit.Application.Teachers.Commands;
-using ScheduleDevelopmentKit.Application.Teachers.Queries;
+using ScheduleDevelopmentKit.Modules.Core.Teachers.Commands;
+using ScheduleDevelopmentKit.Modules.Core.Teachers.Queries;
 
-namespace ScheduleDevelopmentKit.Application.Teachers
+namespace ScheduleDevelopmentKit.Modules.Core.Teachers
 {
     [ApiController]
     [Route("api/v1/teachers")]

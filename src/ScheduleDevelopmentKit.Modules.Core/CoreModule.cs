@@ -3,8 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.Extensions.DependencyInjection;
 
-
-namespace ScheduleDevelopmentKit.Application
+namespace ScheduleDevelopmentKit.Modules.Core
 {
     public static class CoreModule
     {
