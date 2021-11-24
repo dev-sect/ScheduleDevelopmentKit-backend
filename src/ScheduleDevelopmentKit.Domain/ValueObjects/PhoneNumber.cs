@@ -11,7 +11,7 @@ namespace ScheduleDevelopmentKit.Domain.ValueObjects
         private PhoneNumber() {}
         public PhoneNumber(string value)
         {
-            if (!Regex.IsMatch(value, @"^\+7.{10}$"))
+            if (!Regex.IsMatch(value, @"^\+7[0-9]{10}$"))
                 throw new ArgumentException("Wrong phone number format");
             Value = value;
         }
