@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ScheduleDevelopmentKit.Domain.Entities;
+using ScheduleDevelopmentKit.Domain.ValueObjects;
 
 namespace ScheduleDevelopmentKit.DataAccess.EntityConfigurations
 {
@@ -11,8 +12,12 @@ namespace ScheduleDevelopmentKit.DataAccess.EntityConfigurations
             builder.HasKey(t => t.Id);
             builder.Property(t => t.Id).ValueGeneratedNever();
 
-            builder.OwnsOne(t => t.Name);
-            builder.OwnsOne(t => t.Email);
+            var nameConfigurationBuilder =  builder.OwnsOne(t => t.Name);
+            nameConfigurationBuilder.Property(pn => pn.FirstName).HasMaxLength(30);
+            nameConfigurationBuilder.Property(pn => pn.LastName).HasMaxLength(30);
+            nameConfigurationBuilder.Property(pn => pn.MiddleName).HasMaxLength(30);
+
+            builder.OwnsOne(t => t.Email).Property(p => p.Value).HasMaxLength(60);
             builder.OwnsOne(t => t.PhoneNumber);
         }
     }

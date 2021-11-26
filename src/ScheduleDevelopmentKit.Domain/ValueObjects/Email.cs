@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace ScheduleDevelopmentKit.Domain.ValueObjects
 {
@@ -9,6 +10,8 @@ namespace ScheduleDevelopmentKit.Domain.ValueObjects
         private Email() {}
         public Email(string value)
         {
+            if (!value.Contains("@"))
+                throw new ArgumentException("Wrong email format");
             Value = value;
         }
 
