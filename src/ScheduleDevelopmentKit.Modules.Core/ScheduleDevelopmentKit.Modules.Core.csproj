@@ -15,6 +15,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\ScheduleDevelopmentKit.Common\ScheduleDevelopmentKit.Common.csproj" />
       <ProjectReference Include="..\ScheduleDevelopmentKit.DataAccess\ScheduleDevelopmentKit.DataAccess.csproj" />
     </ItemGroup>
 
