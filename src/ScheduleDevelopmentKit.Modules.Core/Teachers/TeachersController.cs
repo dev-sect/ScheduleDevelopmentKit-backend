@@ -29,6 +29,13 @@ namespace ScheduleDevelopmentKit.Modules.Core.Teachers
             return await _mediator.Send(command);
         }
 
+        [HttpPost("delete")]
+        public async Task<ActionResult> DeleteTeacherById(DeleteTeacher.Command command)
+        {
+            await _mediator.Send(command);
+            return Ok();
+        }
+
         [HttpPost("get-by-id")]
         public async Task<ActionResult<GetTeacherById.Response>> GetTeacherById(GetTeacherById.Query query)
         {
