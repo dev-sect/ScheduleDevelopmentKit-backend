@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using ScheduleDevelopmentKit.Modules.Core.Teachers.Commands;
@@ -22,7 +22,13 @@ namespace ScheduleDevelopmentKit.Modules.Core.Teachers
         {
             return await _mediator.Send(command);
         }
-        
+
+        [HttpPost("edit")]
+        public async Task<ActionResult<EditTeacher.Response>> CreateTeacherById(EditTeacher.Command command)
+        {
+            return await _mediator.Send(command);
+        }
+
         [HttpPost("get-by-id")]
         public async Task<ActionResult<GetTeacherById.Response>> GetTeacherById(GetTeacherById.Query query)
         {
