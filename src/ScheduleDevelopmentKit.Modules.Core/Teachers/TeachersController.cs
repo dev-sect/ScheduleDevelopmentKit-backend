@@ -1,4 +1,4 @@
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using ScheduleDevelopmentKit.Modules.Core.Teachers.Commands;
@@ -31,6 +31,12 @@ namespace ScheduleDevelopmentKit.Modules.Core.Teachers
 
         [HttpPost("get-by-id")]
         public async Task<ActionResult<GetTeacherById.Response>> GetTeacherById(GetTeacherById.Query query)
+        {
+            return await _mediator.Send(query);
+        }
+
+        [HttpPost("get-list")]
+        public async Task<ActionResult<GetTeachersList.Response>> GetTeachersList(GetTeachersList.Query query)
         {
             return await _mediator.Send(query);
         }
