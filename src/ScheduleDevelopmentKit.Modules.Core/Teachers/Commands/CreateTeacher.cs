@@ -36,7 +36,7 @@ namespace ScheduleDevelopmentKit.Modules.Core.Teachers.Commands
         [PublicAPI]
         public record Response(
             Guid Id,
-            string FullName);
+            string LastNameAndInitials);
 
         [UsedImplicitly]
         public class CommandHandler : IRequestHandler<Command, Response>
