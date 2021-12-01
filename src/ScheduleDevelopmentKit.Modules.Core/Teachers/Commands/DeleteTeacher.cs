@@ -33,7 +33,9 @@ namespace ScheduleDevelopmentKit.Modules.Core.Teachers.Commands
                     throw new EntityNotFoundException($"Teacher with Id {request.Id} not found");
 
                 _sdkDbContext.Teachers.Remove(teacher);
+
                 await _sdkDbContext.SaveChangesAsync(cancellationToken);
+
                 return Unit.Value;
             }
         }

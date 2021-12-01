@@ -39,14 +39,16 @@ namespace ScheduleDevelopmentKit.Modules.Core.Teachers.Queries
 
             public async Task<Response> Handle(Query request, CancellationToken cancellationToken)
             {
-                return new Response(await _context.Teachers.Select(
-                                        t => new Response.TeacherDto(
-                                            t.Id,
-                                            t.Name.FirstName,
-                                            t.Name.LastName,
-                                            t.Name.MiddleName,
-                                            t.PhoneNumber.Value,
-                                            t.Email.Value)).ToListAsync(cancellationToken));
+                var teachers = await _context.Teachers.Select(
+                    t => new Response.TeacherDto(
+                        t.Id,
+                        t.Name.FirstName,
+                        t.Name.LastName,
+                        t.Name.MiddleName,
+                        t.PhoneNumber.Value,
+                        t.Email.Value)).ToListAsync(cancellationToken);
+
+                return new Response(teachers);
             }
         }
     }

@@ -11,7 +11,7 @@ using ScheduleDevelopmentKit.Domain.ValueObjects;
 
 namespace ScheduleDevelopmentKit.Modules.Core.Teachers.Commands
 {
-    public class EditTeacher
+    public static class EditTeacher
     {
         [PublicAPI]
         public record Command(
@@ -60,8 +60,11 @@ namespace ScheduleDevelopmentKit.Modules.Core.Teachers.Commands
                 teacher.Email = new Email(request.Email);
                 teacher.Name = new PersonName(request.FirstName, request.LastName, request.LastName);
                 teacher.PhoneNumber = new PhoneNumber(request.PhoneNumber);
+
                 _sdkDbContext.Teachers.Update(teacher);
+
                 await _sdkDbContext.SaveChangesAsync(cancellationToken);
+
                 return new Response(teacher.Id, teacher.Name.LastNameAndInitials);
             }
         }
