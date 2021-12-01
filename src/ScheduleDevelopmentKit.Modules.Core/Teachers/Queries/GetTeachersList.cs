@@ -16,9 +16,9 @@ namespace ScheduleDevelopmentKit.Modules.Core.Teachers.Queries
         public record Query() : IRequest<Response>;
 
         [PublicAPI]
-        public record Response(IList<Response.TeacherDto> Teachers)
+        public record Response(IReadOnlyCollection<Response.Teacher> Teachers)
         {
-            public record TeacherDto(
+            public record Teacher(
                 Guid Id,
                 string FirstName,
                 string LastName,
@@ -40,7 +40,7 @@ namespace ScheduleDevelopmentKit.Modules.Core.Teachers.Queries
             public async Task<Response> Handle(Query request, CancellationToken cancellationToken)
             {
                 var teachers = await _context.Teachers.Select(
-                    t => new Response.TeacherDto(
+                    t => new Response.Teacher(
                         t.Id,
                         t.Name.FirstName,
                         t.Name.LastName,
