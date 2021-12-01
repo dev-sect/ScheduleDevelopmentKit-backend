@@ -10,7 +10,7 @@ using ScheduleDevelopmentKit.DataAccess;
 
 namespace ScheduleDevelopmentKit.Modules.Core.Teachers.Queries
 {
-    public class GetTeachersList
+    public static class GetTeachersList
     {
         [PublicAPI]
         public record Query() : IRequest<Response>;

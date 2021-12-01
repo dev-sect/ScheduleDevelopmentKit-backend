@@ -9,7 +9,7 @@ using ScheduleDevelopmentKit.DataAccess;
 
 namespace ScheduleDevelopmentKit.Modules.Core.Teachers.Commands
 {
-    public class DeleteTeacher
+    public static class DeleteTeacher
     {
         [PublicAPI]
         public record Command(Guid Id) : IRequest;
