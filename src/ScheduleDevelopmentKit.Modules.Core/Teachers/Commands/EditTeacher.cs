@@ -4,16 +4,18 @@ using System.Threading.Tasks;
 using FluentValidation;
 using JetBrains.Annotations;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
+using ScheduleDevelopmentKit.Common.Exceptions;
 using ScheduleDevelopmentKit.DataAccess;
-using ScheduleDevelopmentKit.Domain.Entities;
 using ScheduleDevelopmentKit.Domain.ValueObjects;
 
 namespace ScheduleDevelopmentKit.Modules.Core.Teachers.Commands
 {
-    public static class CreateTeacher
+    public static class EditTeacher
     {
         [PublicAPI]
         public record Command(
+            Guid Id,
             string FirstName,
             string LastName,
             string? MiddleName,
@@ -50,16 +52,16 @@ namespace ScheduleDevelopmentKit.Modules.Core.Teachers.Commands
 
             public async Task<Response> Handle(Command request, CancellationToken cancellationToken)
             {
-                var teacher = new Teacher(
-                    Guid.NewGuid(),
-                    new PersonName(
-                        request.FirstName,
-                        request.LastName,
-                        request.MiddleName),
-                    new Email(request.Email),
-                    new PhoneNumber(request.PhoneNumber));
+                var teacher = await _sdkDbContext.Teachers.SingleOrDefaultAsync(t => t.Id == request.Id, cancellationToken);
 
-                await _sdkDbContext.Teachers.AddAsync(teacher, cancellationToken);
+                if (teacher is null)
+                    throw new EntityNotFoundException($"Teacher with Id {request.Id} not found");
+
+                teacher.Email = new Email(request.Email);
+                teacher.Name = new PersonName(request.FirstName, request.LastName, request.LastName);
+                teacher.PhoneNumber = new PhoneNumber(request.PhoneNumber);
+
+                _sdkDbContext.Teachers.Update(teacher);
 
                 await _sdkDbContext.SaveChangesAsync(cancellationToken);
 
