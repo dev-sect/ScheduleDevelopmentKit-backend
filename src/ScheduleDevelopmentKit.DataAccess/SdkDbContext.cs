@@ -6,8 +6,9 @@ namespace ScheduleDevelopmentKit.DataAccess
 {
     public class SdkDbContext : DbContext
     {
-        public SdkDbContext(DbContextOptions<SdkDbContext> options) : base(options) {}
-
+        public SdkDbContext(DbContextOptions<SdkDbContext> options) : base(options) {
+            Database.EnsureCreated();
+        }
         public DbSet<Teacher> Teachers { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder builder)
