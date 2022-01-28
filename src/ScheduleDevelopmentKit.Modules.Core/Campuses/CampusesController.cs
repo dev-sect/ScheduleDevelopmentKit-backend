@@ -2,6 +2,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using ScheduleDevelopmentKit.Modules.Core.Campuses.Commands;
+using ScheduleDevelopmentKit.Modules.Core.Campuses.Queries;
 
 namespace ScheduleDevelopmentKit.Modules.Core.Campuses
 {
@@ -20,6 +21,12 @@ namespace ScheduleDevelopmentKit.Modules.Core.Campuses
         public async Task<ActionResult<CreateCampus.Response>> CreateTeacher(CreateCampus.Command command)
         {
             return await _mediator.Send(command);
+        }
+
+        [HttpPost("get-list")]
+        public async Task<ActionResult<GetCampusesList.Response>> GetCampuses(GetCampusesList.Query query)
+        {
+            return await _mediator.Send(query);
         }
     }
 }
