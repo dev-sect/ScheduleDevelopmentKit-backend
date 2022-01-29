@@ -28,5 +28,11 @@ namespace ScheduleDevelopmentKit.Modules.Core.Campuses
         {
             return await _mediator.Send(query);
         }
+
+        [HttpPost("get-by-id")]
+        public async Task<ActionResult<GetCampusById.Response>> GetCampusById(GetCampusById.Query query)
+        {
+            return await _mediator.Send(query);
+        }
     }
 }

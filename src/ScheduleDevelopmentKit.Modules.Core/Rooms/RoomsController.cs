@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using ScheduleDevelopmentKit.Modules.Core.Campuses.Commands;
 using ScheduleDevelopmentKit.Modules.Core.Rooms.Commands;
+using ScheduleDevelopmentKit.Modules.Core.Rooms.Queries;
 
 namespace ScheduleDevelopmentKit.Modules.Core.Rooms
 {
@@ -21,6 +22,12 @@ namespace ScheduleDevelopmentKit.Modules.Core.Rooms
         public async Task<ActionResult<CreateRoom.Response>> CreateRoom(CreateRoom.Command command)
         {
             return await _mediator.Send(command);
+        }
+
+        [HttpPost("get-by-id")]
+        public async Task<ActionResult<GetRoomById.Response>> GetRoomById(GetRoomById.Query query)
+        {
+            return await _mediator.Send(query);
         }
     }
 }
