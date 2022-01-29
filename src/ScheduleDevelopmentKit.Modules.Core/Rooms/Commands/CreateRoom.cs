@@ -47,7 +47,7 @@ namespace ScheduleDevelopmentKit.Modules.Core.Rooms.Commands
                 if (campus is null)
                     throw new EntityNotFoundException($"Campus with Id {request.CampusId} not found");
 
-                var room = new Room(Guid.NewGuid(), new RoomNumber(request.Number), request.BelongsToFaculty);
+                var room = new Room(Guid.NewGuid(), campus, new RoomNumber(request.Number), request.BelongsToFaculty);
                 campus.AddRoom(room);
 
                 await _dbContext.AddAsync(room, cancellationToken);

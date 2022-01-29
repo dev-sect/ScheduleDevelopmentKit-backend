@@ -14,6 +14,7 @@ namespace ScheduleDevelopmentKit.DataAccess.EntityConfigurations
             builder.OwnsOne(c => c.Name).Property(cn => cn.Value).HasMaxLength(100);
             builder.OwnsOne(c => c.Address).Property(a => a.Value).HasMaxLength(300);
             builder.Navigation(c => c.Rooms).HasField("_rooms");
+            builder.HasMany(c => c.Rooms).WithOne(r => r.Campus);
         }
     }
 }
