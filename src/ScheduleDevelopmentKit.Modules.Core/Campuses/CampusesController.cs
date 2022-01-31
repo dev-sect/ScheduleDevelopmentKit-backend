@@ -34,5 +34,11 @@ namespace ScheduleDevelopmentKit.Modules.Core.Campuses
         {
             return await _mediator.Send(query);
         }
+
+        [HttpPost("delete")]
+        public async Task<ActionResult<DeleteCampus.Response>> DeleteCampus(DeleteCampus.Command command)
+        {
+            return await _mediator.Send(command);
+        }
     }
 }
