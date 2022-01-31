@@ -35,5 +35,11 @@ namespace ScheduleDevelopmentKit.Modules.Core.Rooms
         {
             return await _mediator.Send(query);
         }
+
+        [HttpPost("delete-room")]
+        public async Task<ActionResult<DeleteRoom.Response>> DeleteRoom(DeleteRoom.Command command)
+        {
+            return await _mediator.Send(command);
+        }
     }
 }
