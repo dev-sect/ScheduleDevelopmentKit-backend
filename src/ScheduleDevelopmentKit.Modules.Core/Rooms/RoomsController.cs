@@ -41,5 +41,11 @@ namespace ScheduleDevelopmentKit.Modules.Core.Rooms
         {
             return await _mediator.Send(command);
         }
+
+        [HttpPost("edit")]
+        public async Task<ActionResult<EditRoom.Response>> EditRoom(EditRoom.Command command)
+        {
+            return await _mediator.Send(command);
+        }
     }
 }

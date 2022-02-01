@@ -40,5 +40,11 @@ namespace ScheduleDevelopmentKit.Modules.Core.Campuses
         {
             return await _mediator.Send(command);
         }
+
+        [HttpPost("edit")]
+        public async Task<ActionResult<EditCampus.Response>> EditCampus(EditCampus.Command command)
+        {
+            return await _mediator.Send(command);
+        }
     }
 }
