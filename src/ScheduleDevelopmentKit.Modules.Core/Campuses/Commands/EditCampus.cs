@@ -4,16 +4,18 @@ using System.Threading.Tasks;
 using FluentValidation;
 using JetBrains.Annotations;
 using MediatR;
+using ScheduleDevelopmentKit.Common.Exceptions;
 using ScheduleDevelopmentKit.DataAccess;
 using ScheduleDevelopmentKit.Domain.Entities;
 using ScheduleDevelopmentKit.Domain.ValueObjects;
 
 namespace ScheduleDevelopmentKit.Modules.Core.Campuses.Commands
 {
-    public static class CreateCampus
+    public static class EditCampus
     {
         [PublicAPI]
         public record Command(
+            Guid Id,
             string Name,
             string Address) : IRequest<Response>;
 
@@ -42,12 +44,15 @@ namespace ScheduleDevelopmentKit.Modules.Core.Campuses.Commands
 
             public async Task<Response> Handle(Command request, CancellationToken cancellationToken)
             {
-                var campus = new Campus(
-                    Guid.NewGuid(),
-                    new CampusName(request.Name),
-                    new CampusAddress(request.Address));
+                var campus = await _sdkDbContext.Campuses.FindAsync(new object[]{ request.Id }, cancellationToken);
 
-                await _sdkDbContext.Campuses.AddAsync(campus, cancellationToken);
+                if (campus is null)
+                    throw new EntityNotFoundException($"Campus with id {request.Id} not found");
+
+                campus.Address = new CampusAddress(request.Address);
+                campus.Name = new CampusName(request.Name);
+
+                _sdkDbContext.Campuses.Update(campus);
                 await _sdkDbContext.SaveChangesAsync(cancellationToken);
 
                 return new Response(campus.Id, campus.Name.Value);

@@ -10,8 +10,8 @@ namespace ScheduleDevelopmentKit.Domain.Entities
     {
         private readonly List<Room> _rooms = new List<Room>();
         public Guid Id { get; private set; }
-        public CampusName Name { get; private set; }
-        public CampusAddress Address { get; private set; }
+        public CampusName Name { get; set; }
+        public CampusAddress Address { get; set; }
         public IReadOnlyCollection<Room> Rooms => _rooms.AsReadOnly();
 
         private Campus() { }
