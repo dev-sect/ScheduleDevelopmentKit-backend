@@ -7,8 +7,8 @@ namespace ScheduleDevelopmentKit.Domain.Entities
     {
         public Guid Id { get; private set; }
         public Campus Campus { get; private set; }
-        public RoomNumber Number { get; private set; }
-        public bool BelongsToFaculty { get; private set; }
+        public RoomNumber Number { get; set; }
+        public bool BelongsToFaculty { get; set; }
 
         private Room() { }
 
