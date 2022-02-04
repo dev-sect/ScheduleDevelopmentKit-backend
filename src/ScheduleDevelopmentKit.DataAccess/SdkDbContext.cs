@@ -5,8 +5,9 @@ namespace ScheduleDevelopmentKit.DataAccess
 {
     public class SdkDbContext : DbContext
     {
-        public SdkDbContext(DbContextOptions<SdkDbContext> options) : base(options) {}
-
+        public SdkDbContext(DbContextOptions<SdkDbContext> options) : base(options) {
+            Database.EnsureCreated();
+        }
         public DbSet<Teacher> Teachers { get; set; } = null!;
         public DbSet<Room> Rooms { get; set; } = null!;
         public DbSet<Campus> Campuses { get; set; } = null!;

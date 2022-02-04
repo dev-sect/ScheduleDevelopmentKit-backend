@@ -20,9 +20,8 @@ namespace ScheduleDevelopmentKit.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<SdkDbContext>(
-                o => o.UseInMemoryDatabase("SdkDb"));
-
+            services.AddDbContext<SdkDbContext>(options =>
+                 options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers(options => options.Filters.Add(new GlobalExceptionFilter()));
             services.AddCoreModule();
         }
