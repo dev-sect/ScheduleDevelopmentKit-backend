@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ScheduleDevelopmentKit.DataAccess.EntityConfigurations;
 using ScheduleDevelopmentKit.Domain.Entities;
 
 namespace ScheduleDevelopmentKit.DataAccess
@@ -9,12 +8,14 @@ namespace ScheduleDevelopmentKit.DataAccess
         public SdkDbContext(DbContextOptions<SdkDbContext> options) : base(options) {}
 
         public DbSet<Teacher> Teachers { get; set; } = null!;
+        public DbSet<Room> Rooms { get; set; } = null!;
+        public DbSet<Campus> Campuses { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
 
-            builder.ApplyConfiguration(new TeacherConfiguration());
+            builder.ApplyConfigurationsFromAssembly(GetType().Assembly);
         }
     }
 }

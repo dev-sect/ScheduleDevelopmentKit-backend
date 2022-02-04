@@ -8,6 +8,7 @@ namespace ScheduleDevelopmentKit.Domain.ValueObjects
         public string Value { get; private set; } = null!;
 
         private Email() {}
+
         public Email(string value)
         {
             if (!value.Contains("@"))
