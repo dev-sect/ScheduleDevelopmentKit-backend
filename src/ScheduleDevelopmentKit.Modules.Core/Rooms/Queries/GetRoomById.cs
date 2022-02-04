@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using FluentValidation;
 using JetBrains.Annotations;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using ScheduleDevelopmentKit.Common.Exceptions;
 using ScheduleDevelopmentKit.DataAccess;
-using ScheduleDevelopmentKit.Modules.Core.Campuses.Queries;
 
 namespace ScheduleDevelopmentKit.Modules.Core.Rooms.Queries
 {

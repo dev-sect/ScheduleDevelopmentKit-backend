@@ -19,7 +19,7 @@ namespace ScheduleDevelopmentKit.Modules.Core.Campuses.Commands
         [UsedImplicitly]
         public class CommandHandler : IRequestHandler<Command, Response>
         {
-            private SdkDbContext _dbContext;
+            private readonly SdkDbContext _dbContext;
 
             public CommandHandler(SdkDbContext dbContext)
             {

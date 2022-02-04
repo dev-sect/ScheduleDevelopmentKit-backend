@@ -6,7 +6,6 @@ using JetBrains.Annotations;
 using MediatR;
 using ScheduleDevelopmentKit.Common.Exceptions;
 using ScheduleDevelopmentKit.DataAccess;
-using ScheduleDevelopmentKit.Domain.Entities;
 using ScheduleDevelopmentKit.Domain.ValueObjects;
 
 namespace ScheduleDevelopmentKit.Modules.Core.Campuses.Commands

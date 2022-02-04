@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using FluentValidation;
 using JetBrains.Annotations;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -28,7 +27,7 @@ namespace ScheduleDevelopmentKit.Modules.Core.Campuses.Queries
         [UsedImplicitly]
         public class QueryHandler : IRequestHandler<Query, Response>
         {
-            private SdkDbContext _dbContext;
+            private readonly SdkDbContext _dbContext;
 
             public QueryHandler(SdkDbContext dbContext)
             {

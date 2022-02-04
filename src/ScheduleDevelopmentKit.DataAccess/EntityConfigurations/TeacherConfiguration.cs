@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ScheduleDevelopmentKit.Domain.Entities;
-using ScheduleDevelopmentKit.Domain.ValueObjects;
 
 namespace ScheduleDevelopmentKit.DataAccess.EntityConfigurations
 {

@@ -4,10 +4,8 @@ using System.Threading.Tasks;
 using FluentValidation;
 using JetBrains.Annotations;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 using ScheduleDevelopmentKit.Common.Exceptions;
 using ScheduleDevelopmentKit.DataAccess;
-using ScheduleDevelopmentKit.Domain.Entities;
 using ScheduleDevelopmentKit.Domain.ValueObjects;
 
 namespace ScheduleDevelopmentKit.Modules.Core.Rooms.Commands
